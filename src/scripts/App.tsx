@@ -1,15 +1,15 @@
-
-// import useState next to FunctionComponent
 import * as React from "react";
 
-import {useEffect, useState} from "react";
+interface IAppProps {
+}
 
-const App = () => {
+const App = (props: IAppProps) => {
     return (
         <div>
             hi
         </div>
+
     )
 };
 
-export default App;
+export default App

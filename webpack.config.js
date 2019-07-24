@@ -1,13 +1,25 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-
+var path = require('path');
 module.exports = {
-    entry: './src/index.tsx',
+    entry: './src/scripts/index.tsx',
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/
+                test: /\.(ts|tsx)?$/,
+                include: path.resolve(__dirname, 'src'),
+                use: [
+                    {
+                        loader: 'ts-loader'
+                    }
+                ]
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: "html-loader"
+                    }
+                ]
             }
         ]
     },
@@ -20,8 +32,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebPackPlugin({
-            template: "./src/index.html",
-            filename: "./index.html"
+            template: "./src/templates/index.html",
         })
     ]
 };

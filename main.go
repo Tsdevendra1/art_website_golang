@@ -1,4 +1,4 @@
-package artWebsite
+package main
 
 import (
 	"log"

@@ -9,7 +9,7 @@ module.exports = {
                 include: path.resolve(__dirname, 'src'),
                 use: [
                     {
-                        loader: 'ts-loader'
+                        loader: 'babel-loader'
                     }
                 ]
             },
@@ -23,6 +23,7 @@ module.exports = {
             }
         ]
     },
+    watch: true,
     resolve: {
         extensions: ['.tsx', '.ts', '.js']
     },

@@ -10,7 +10,8 @@ import (
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Welcome!")
+	//http.ServeFile(w, r, "./dist/index.html")
+	fmt.Fprintln(w, "Welcome!aewqeqwewqeq")
 }
 
 func TodoIndex(w http.ResponseWriter, r *http.Request) {
@@ -29,4 +30,5 @@ func TodoShow(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	todoId := vars["todoId"]
 	fmt.Fprintln(w, "Todo show:", todoId)
+
 }

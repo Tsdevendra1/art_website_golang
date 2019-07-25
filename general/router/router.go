@@ -3,7 +3,7 @@ package router
 import (
 	"github.com/gorilla/mux"
 	"net/http"
-	"testProject/art"
+	"artWebsite/art"
 )
 
 

@@ -1,8 +1,8 @@
 package art
 
 import (
-	"testProject/art/handlers"
-	"testProject/general/types"
+	"artWebsite/art/handlers"
+	"artWebsite/general/types"
 )
 
 var ArtRoutes = types.RoutesArray{

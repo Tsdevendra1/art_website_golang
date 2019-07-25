@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
-	"testProject/general/router"
+	"artWebsite/general/router"
 )
 
 func main() {

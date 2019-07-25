@@ -4,14 +4,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"testProject/art/models"
+	"artWebsite/art/models"
 
 	"github.com/gorilla/mux"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	//http.ServeFile(w, r, "./dist/index.html")
-	fmt.Fprintln(w, "Welcome!aewqeqwewqeq")
+	http.ServeFile(w, r, "./dist/index.html")
 }
 
 func TodoIndex(w http.ResponseWriter, r *http.Request) {

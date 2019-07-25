@@ -1,10 +1,14 @@
 package main
 
 import (
+	"artWebsite/general/router"
 	"database/sql"
 	"fmt"
+	"log"
+	"net/http"
 	_ "github.com/lib/pq"
 )
+
 
 const (
 	host     = "localhost"
@@ -31,11 +35,19 @@ func setupDb() *sql.DB {
 		panic(err)
 	}
 
-
 	err = db.Ping()
 	if err != nil {
 		panic(err)
 	}
 	fmt.Println("Successfully connected!")
 	return db
+}
+
+func main() {
+
+	mainRouter := router.NewRouter()
+	mainRouter.PathPrefix("/").Handler(http.FileServer(http.Dir("./dist/")))
+	db := setupDb()
+	defer closeDb(db)
+	log.Fatal(http.ListenAndServe(":8080", mainRouter))
 }

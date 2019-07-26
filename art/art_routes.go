@@ -5,7 +5,7 @@ import (
 	"artWebsite/general/types"
 )
 
-var ArtRoutes = types.RoutesArray{
+var Routes = types.RoutesArray{
 	types.Route{
 		"Index",
 		"GET",

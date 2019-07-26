@@ -1,12 +1,15 @@
 package general
 
-import "artWebsite/general/types"
+import (
+	"artWebsite/general/handlers"
+	"artWebsite/general/types"
+)
 
 var Routes = types.RoutesArray{
 	types.Route{
 		"Index",
 		"GET",
-		"/",
-		art.Index,
+		"/users/create",
+		general.UserCreate,
 	},
 }

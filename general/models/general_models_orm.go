@@ -5,9 +5,6 @@ import (
 	"fmt"
 )
 
-type Database struct {
-	DB *sql.DB
-}
 
 func (db *Database) CreateUser(firstName, email, password string) (*User, error) {
 	user := &User{}

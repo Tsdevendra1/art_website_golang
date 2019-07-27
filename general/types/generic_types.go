@@ -1,6 +1,8 @@
 package types
 
-import "net/http"
+import (
+	"net/http"
+)
 
 
 type Route struct {
@@ -11,3 +13,4 @@ type Route struct {
 }
 
 type RoutesArray []Route
+

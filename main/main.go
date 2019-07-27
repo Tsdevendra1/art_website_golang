@@ -45,7 +45,7 @@ func setupDb() *sql.DB {
 
 func main() {
 
-	mainRouter := router.NewRouter()
+	mainRouter := general.NewRouter()
 	mainRouter.PathPrefix("/").Handler(http.FileServer(http.Dir("./dist/")))
 	db := setupDb()
 	defer closeDb(db)

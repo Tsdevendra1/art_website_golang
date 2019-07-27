@@ -7,9 +7,15 @@ import (
 
 var Routes = types.RoutesArray{
 	types.Route{
-		"Index",
+		"UserCreate",
 		"POST",
 		"/users/create",
 		general.UserCreate,
+	},
+	types.Route{
+		"UserSelect",
+		"GET",
+		"/users/select",
+		general.UserSelect,
 	},
 }

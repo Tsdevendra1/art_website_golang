@@ -8,6 +8,7 @@ type User struct {
 	Email     string
 	FirstName string
 	LastName  string
+	Password string
 }
 
 func FieldToString(structToConvert interface{}) string {

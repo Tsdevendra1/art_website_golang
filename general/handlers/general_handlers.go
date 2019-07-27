@@ -9,18 +9,35 @@ import (
 
 func UserCreate(w http.ResponseWriter, r *http.Request) {
 
-	t := general.User{}
+	userJson := general.User{}
 
 	decoder := json.NewDecoder(r.Body)
 
-	if err := decoder.Decode(&t); err != nil {
+	if err := decoder.Decode(&userJson); err != nil {
 		panic(err)
 	}
-	fmt.Println(t)
+	fmt.Println(userJson.FirstName, userJson.Email)
 
-	_, err := fmt.Fprintln(w, "hi")
+	user, err := general.CreateUser(userJson.FirstName, userJson.Email, userJson.Password)
+
+	fmt.Println(user)
+	if err != nil {
+		panic(err)
+	}
+
+	_, err = fmt.Fprintln(w, "hi")
 
 	if err != nil {
 		panic(err)
 	}
+}
+
+func UserSelect(w http.ResponseWriter, r *http.Request) {
+
+	user, err := general.SelectUser("ID = $1", 2)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(user)
 }

@@ -1,15 +1,14 @@
 package general
 
 import (
-	"database/sql"
+	"artWebsite/database"
 	"fmt"
 )
 
-
-func (db *Database) CreateUser(firstName, email, password string) (*User, error) {
+func CreateUser(firstName, email, password string) (*User, error) {
 	user := &User{}
 
-	err := db.DB.QueryRow(fmt.Sprintf(`
+	err := database.DBConn.DB.QueryRow(fmt.Sprintf(`
 insert into users (first_name, email, password)
 values ($1, $2, crypt($3, gen_salt('bf')))
 returning %s
@@ -21,9 +20,9 @@ returning %s
 	return user, err
 }
 
-func (db *Database) SelectUser(queryString string, queryStringValues ...interface{}) (*User, error) {
+func SelectUser(queryString string, queryStringValues ...interface{}) (*User, error) {
 	user := &User{}
-	err := db.DB.QueryRow(fmt.Sprintf(`
+	err := database.DBConn.DB.QueryRow(fmt.Sprintf(`
 	select %s from users where %s
 `, FieldToString(user), queryString), queryStringValues).Scan(user.FieldsToUpdate())
 
@@ -35,6 +34,6 @@ func (db *Database) SelectUser(queryString string, queryStringValues ...interfac
 
 }
 
-func (db *Database) FindUserByFirstName(firstName string) (*User, error) {
-	return db.SelectUser("lower(first_name) = lower($1)", firstName)
+func FindUserByFirstName(firstName string) (*User, error) {
+	return SelectUser("lower(first_name) = lower($1)", firstName)
 }
